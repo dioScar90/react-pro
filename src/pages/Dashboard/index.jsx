@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from 'react-router-dom'
 
 export const Dashboard = () => {
   const [page, setPage] = useState(1)
@@ -43,7 +44,10 @@ export const Dashboard = () => {
 
   return (
     <div className="custom-container">
-      <h1 className="text-3xl font-medium py-8">Usuários</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="text-3xl font-medium py-8">Usuários</h1>
+        <Link to="/dashboard/users/create">Add</Link>
+      </div>
       <div className="overflow-x-auto mt-4">
         <table className="table">
           <thead>
@@ -53,6 +57,7 @@ export const Dashboard = () => {
               <th>Email</th>
               <th>Criação</th>
               <th>Atualização</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -63,6 +68,14 @@ export const Dashboard = () => {
                 <td>{user.email}</td>
                 <td>{user.createdAt}</td>
                 <td>{user.updatedAt}</td>
+                <td>
+                  <Link
+                    to={`/dashboard/users/edit/${user.id}`}
+                    className="text-blue-400"
+                  >
+                    Editar
+                  </Link>
+                </td>
               </tr>
             )}
           </tbody>
