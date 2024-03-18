@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Link } from 'react-router-dom'
 import { IoIosAdd } from 'react-icons/io'
 
-export const Dashboard = () => {
+export const Users = () => {
   const [page, setPage] = useState(1)
 
   const users = [
