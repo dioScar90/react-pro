@@ -11,36 +11,36 @@ export const Categories = () => {
       name: 'Celulares',
       qtyProducts: 3,
       createdAt: '2023-01-01',
-      updatedAt: '2023-01-01',
+      updatedAt: '2023-01-01'
     },
     {
       id: 2,
       name: 'Notebooks',
       qtyProducts: 4,
       createdAt: '2023-01-01',
-      updatedAt: '2023-01-01',
+      updatedAt: '2023-01-01'
     },
     {
       id: 3,
       name: 'Impressoras',
       qtyProducts: 5,
       createdAt: '2023-01-01',
-      updatedAt: '2023-01-01',
+      updatedAt: '2023-01-01'
     },
     {
       id: 4,
       name: 'Carros',
       qtyProducts: 6,
       createdAt: '2023-01-01',
-      updatedAt: '2023-01-01',
-    },
+      updatedAt: '2023-01-01'
+    }
   ]
 
   const perPage = 2
   const totalPages = Math.ceil(categories.length / perPage)
 
   const handleShowMore = () => {
-    setPage(prev => prev + 1)
+    setPage((prev) => prev + 1)
   }
 
   return (
@@ -64,7 +64,7 @@ export const Categories = () => {
             </tr>
           </thead>
           <tbody>
-            {categories.slice(0, page * perPage).map(category =>
+            {categories.slice(0, page * perPage).map((category) => (
               <tr key={category.id}>
                 <td>{category.id}</td>
                 <td>{category.name}</td>
@@ -72,24 +72,21 @@ export const Categories = () => {
                 <td>{category.createdAt}</td>
                 <td>{category.updatedAt}</td>
                 <td>
-                  <Link
-                    to={`/dashboard/categories/edit/${category.id}`}
-                    className="text-blue-400"
-                  >
+                  <Link to={`/dashboard/categories/edit/${category.id}`} className="text-blue-400">
                     Editar
                   </Link>
                 </td>
               </tr>
-            )}
+            ))}
           </tbody>
         </table>
-        {page < totalPages &&
+        {page < totalPages && (
           <div className="flex justify-center">
             <button type="button" className="mt-4 text-primary" onClick={handleShowMore}>
               Mostrar mais
             </button>
           </div>
-        }
+        )}
       </div>
     </>
   )

@@ -1,6 +1,6 @@
-import { useForm } from "react-hook-form"
-import { yupResolver } from "@hookform/resolvers/yup"
-import { schema } from "./consts"
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { schema } from './consts'
 import { useNavigate } from 'react-router-dom'
 
 export const LoginCard = () => {
@@ -37,7 +37,7 @@ export const LoginCard = () => {
           />
           <span className="text-red-300">{formState.errors.password?.message}</span>
         </div>
-        <button type='submit' className='mt-7 bg-blue-400 w-full py-2 rounded-lg text-white'>
+        <button type="submit" className="mt-7 bg-blue-400 w-full py-2 rounded-lg text-white">
           Entrar
         </button>
       </form>

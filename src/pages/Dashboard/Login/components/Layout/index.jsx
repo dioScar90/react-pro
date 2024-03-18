@@ -5,7 +5,7 @@ export const Layout = () => {
   return (
     <>
       <Sidebar />
-      <main className='ml-60'>
+      <main className="ml-60">
         <Outlet />
       </main>
     </>
