@@ -7,6 +7,7 @@ import { Layout } from './pages/Dashboard/Login/components/Layout/index.jsx'
 import { Dashboard } from './pages/Dashboard/index.jsx'
 import { CreateUser } from './pages/Dashboard/Users/Create/index.jsx'
 import { EditUser } from './pages/Dashboard/Users/Edit/index.jsx'
+import { Categories } from './pages/Dashboard/Categories/index.jsx'
 
 
 const browserRouter = createBrowserRouter(createRoutesFromElements(
@@ -17,6 +18,7 @@ const browserRouter = createBrowserRouter(createRoutesFromElements(
         <Route path="create" element={<CreateUser />} />
         <Route path="edit/:id" element={<EditUser />} />
       </Route>
+      <Route path="categories" element={<Categories />} />
       <Route path="products" element={null} />
       <Route path="categories" element={null} />
     </Route>

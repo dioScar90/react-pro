@@ -1,53 +1,53 @@
-import { useState } from "react"
 import { Link } from 'react-router-dom'
 import { IoIosAdd } from 'react-icons/io'
+import { useState } from 'react'
 
-export const Dashboard = () => {
+export const Categories = () => {
   const [page, setPage] = useState(1)
 
-  const users = [
+  const categories = [
     {
       id: 1,
-      name: 'João',
-      email: 'XXXXXXXXXXXXXXX',
+      name: 'Celulares',
+      qtyProducts: 3,
       createdAt: '2023-01-01',
       updatedAt: '2023-01-01',
     },
     {
       id: 2,
-      name: 'João',
-      email: 'XXXXXXXXXXXXXXX',
+      name: 'Notebooks',
+      qtyProducts: 4,
       createdAt: '2023-01-01',
       updatedAt: '2023-01-01',
     },
     {
       id: 3,
-      name: 'João',
-      email: 'XXXXXXXXXXXXXXX',
+      name: 'Impressoras',
+      qtyProducts: 5,
       createdAt: '2023-01-01',
       updatedAt: '2023-01-01',
     },
     {
       id: 4,
-      name: 'João',
-      email: 'XXXXXXXXXXXXXXX',
+      name: 'Carros',
+      qtyProducts: 6,
       createdAt: '2023-01-01',
       updatedAt: '2023-01-01',
     },
   ]
 
   const perPage = 2
-  const totalPages = Math.ceil(users.length / perPage)
+  const totalPages = Math.ceil(categories.length / perPage)
 
   const handleShowMore = () => {
     setPage(prev => prev + 1)
   }
 
   return (
-    <div className="custom-container">
+    <>
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-medium py-8">Usuários</h1>
-        <Link to="/dashboard/users/create">
+        <h1 className="text-3xl font-medium py-8">Categorias</h1>
+        <Link to="/dashboard/categories/create">
           <IoIosAdd className="text-4xl text-primary" />
         </Link>
       </div>
@@ -57,23 +57,23 @@ export const Dashboard = () => {
             <tr>
               <th>ID</th>
               <th>Nome</th>
-              <th>Email</th>
+              <th>Quantidade de produtos</th>
               <th>Criação</th>
               <th>Atualização</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            {users.slice(0, page * perPage).map(user =>
-              <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>{user.createdAt}</td>
-                <td>{user.updatedAt}</td>
+            {categories.slice(0, page * perPage).map(category =>
+              <tr key={category.id}>
+                <td>{category.id}</td>
+                <td>{category.name}</td>
+                <td>{category.qtyProducts}</td>
+                <td>{category.createdAt}</td>
+                <td>{category.updatedAt}</td>
                 <td>
                   <Link
-                    to={`/dashboard/users/edit/${user.id}`}
+                    to={`/dashboard/categories/edit/${category.id}`}
                     className="text-blue-400"
                   >
                     Editar
@@ -83,14 +83,14 @@ export const Dashboard = () => {
             )}
           </tbody>
         </table>
+        {page < totalPages &&
+          <div className="flex justify-center">
+            <button type="button" className="mt-4 text-primary" onClick={handleShowMore}>
+              Mostrar mais
+            </button>
+          </div>
+        }
       </div>
-      {page < totalPages &&
-        <div className="flex justify-center">
-          <button type="button" className="mt-4 text-primary" onClick={handleShowMore}>
-            Mostrar mais
-          </button>
-        </div>
-      }
-    </div>
+    </>
   )
 }

@@ -48,18 +48,20 @@ export const UserForm = ({ userId, name, email }) => {
         />
         <span className="text-red-300">{formState.errors.email?.message}</span>
       </div>
-      <div className="flex flex-col gap-y-1">
-        <label htmlFor="">Senha</label>
-        <input
-          type="password"
-          className="border outline-none px-3 py-1 rounded-lg w-full"
-          placeholder="Senha"
-          {...register("password")}
-        />
-        <span className="text-red-300">
-          {formState.errors.password?.message}
-        </span>
-      </div>
+      {!userId &&
+        <div className="flex flex-col gap-y-1">
+          <label htmlFor="">Senha</label>
+          <input
+            type="password"
+            className="border outline-none px-3 py-1 rounded-lg w-full"
+            placeholder="Senha"
+            {...register("password")}
+          />
+          <span className="text-red-300">
+            {formState.errors.password?.message}
+          </span>
+        </div>
+      }
       <div className="flex flex-col gap-y-1">
         <label htmlFor="">Cargo</label>
         <select
