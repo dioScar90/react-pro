@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.custom-container {
+  width: min(1270px, 90%);
+  margin-inline: auto;
+}

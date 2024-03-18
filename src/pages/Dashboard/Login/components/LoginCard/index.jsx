@@ -1,14 +1,17 @@
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { schema } from "./consts"
+import { useNavigate } from 'react-router-dom'
 
 export const LoginCard = () => {
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(schema)
   })
+  const navigate = useNavigate()
 
   const onSubmit = (data) => {
     console.log('data', data)
+    navigate('/dashboard')
   }
 
   return (

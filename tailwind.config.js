@@ -7,13 +7,22 @@ export default {
   theme: {
     extend: {
       colors: {
-        minhaCor: {
-          100: '#ffccee',
-          default: '#ff66cc'
+        primary: {
+          DEFAULT: '#3655C7'
         }
       }
     },
   },
-  plugins: [],
+  plugins: [require('daisyui')],
+  daisyui: {
+    themes: false,
+    darkTheme: 'cat',
+    base: false,
+    styled: true,
+    utils: true,
+    prefix: '',
+    logs: true,
+    themeRoot: ':root',
+  }
 }
 
