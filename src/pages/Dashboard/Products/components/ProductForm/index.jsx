@@ -1,27 +1,25 @@
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { schemaCreateCategory } from './consts'
+import { schemaCreateProduct } from './consts'
 import PropTypes from 'prop-types'
 
-export const CategoryForm = ({ categoryId }) => {
+export const ProductForm = ({ productId }) => {
   const { register, handleSubmit, formState } = useForm({
-    defaultValues: categoryId
+    defaultValues: productId
       ? {
           name: 'João',
-          qtyProducts: 'XXXXXXXXXXXXXXX',
-          role: 1
         }
       : undefined,
-    resolver: yupResolver(schemaCreateCategory)
+    resolver: yupResolver(schemaCreateProduct)
   })
 
   const onSubmitHandler = (data) => {
     console.log('data', data)
 
-    if (categoryId) {
-      // TODO: edit category
+    if (productId) {
+      // TODO: edit product
     } else {
-      // TODO: create category
+      // TODO: create product
     }
 
     // TODO: integrar com API
@@ -40,14 +38,14 @@ export const CategoryForm = ({ categoryId }) => {
         <span className="text-red-300">{formState.errors.name?.message}</span>
       </div>
       <button type="submit" className="mt-4 bg-primary w-full py-2 rounded-lg text-white">
-        {categoryId ? 'Editar' : 'Cadastrar'}
+        {productId ? 'Editar' : 'Cadastrar'}
       </button>
     </form>
   )
 }
 
-CategoryForm.propTypes = {
-  categoryId: PropTypes.string
+ProductForm.propTypes = {
+  productId: PropTypes.string
   // name: PropTypes.string,
   // email: PropTypes.string,
 }
