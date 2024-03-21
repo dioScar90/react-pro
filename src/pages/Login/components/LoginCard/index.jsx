@@ -1,11 +1,11 @@
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { schema } from './consts'
-import { useNavigate } from 'react-router-dom'
+import { schemaLoginCard } from './consts'
+import { Link, useNavigate } from 'react-router-dom'
 
 export const LoginCard = () => {
   const { register, handleSubmit, formState } = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schemaLoginCard)
   })
   const navigate = useNavigate()
 
@@ -16,6 +16,7 @@ export const LoginCard = () => {
 
   return (
     <div className="p-6 rounded-lg bg-white shadow-md w-80">
+      <h1 className="text-3xl text-center">Login</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-y-1">
           <label htmlFor="">Email</label>
@@ -37,9 +38,12 @@ export const LoginCard = () => {
           />
           <span className="text-red-300">{formState.errors.password?.message}</span>
         </div>
-        <button type="submit" className="mt-7 bg-blue-400 w-full py-2 rounded-lg text-white">
+        <button type="submit" className="mt-7 bg-primary w-full py-2 rounded-lg text-white">
           Entrar
         </button>
+        <Link to="/register" className="text-center text-primary">
+          Registrar
+        </Link>
       </form>
     </div>
   )
