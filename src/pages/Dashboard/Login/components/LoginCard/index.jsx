@@ -2,22 +2,53 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { schemaLoginCard } from './consts'
 import { Link, useNavigate } from 'react-router-dom'
+import { httpClient } from '../../../../../services/axios'
+import { useState } from 'react'
 
 export const LoginCard = () => {
+  const [errorAuth, setErrorAuth] = useState(null)
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(schemaLoginCard)
   })
   const navigate = useNavigate()
 
-  const onSubmit = (data) => {
-    console.log('data', data)
-    navigate('/dashboard')
+  const onSubmit = async (data) => {
+    const body = {
+      email: data.email,
+      password: data.password
+    }
+
+    try {
+      const resp = await httpClient.post('/auth/login', body)
+      const token = resp.data.token
+      
+      localStorage.setItem('token', token)
+      
+      const headers = { Authorization: `Bearer ${token}` }
+      
+      const resp2 = await httpClient.get('/users/me', { headers })
+      const role = resp2.data.role.name
+      
+      if (role === 'ADMIN') {
+        navigate('/dashboard')
+      } else {
+        setErrorAuth('Email ou senha incorretos.')
+      }
+    } catch (err) {
+      if (err.response.status === 401) {
+        setErrorAuth('Credenciais erradas.')
+      }
+      console.log('err', err)
+    }
   }
 
   return (
     <div className="p-6 rounded-lg bg-white shadow-md w-80">
       <h1 className="text-3xl text-center">Login</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
+        {errorAuth && (
+          <span className="text-red-400 inline-block mb-3 font-medium">{errorAuth}</span>
+        )}
         <div className="flex flex-col gap-y-1">
           <label htmlFor="">Email</label>
           <input

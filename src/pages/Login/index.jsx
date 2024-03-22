@@ -1,5 +1,5 @@
 import DashboardLoginImage from '../../assets/dashboardLoginImage.svg'
-import { LoginCard } from './components/LoginCard'
+import { LoginCard } from '../Dashboard/Login/components/LoginCard'
 
 export const Login = () => {
   return (
