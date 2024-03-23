@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { FaMinus, FaTrash } from 'react-icons/fa'
 import { GoPlus } from 'react-icons/go'
+import { formatCurrency } from '../../helperFunctions/dataManipulation/formatCurrency'
 
 const items = [
   {
@@ -28,14 +29,7 @@ export const Cart = () => {
     const newItems = items.filter(item => item.productId !== id)
     setItems(newItems)
   }
-
-  const formatToCurrency = (value) => {
-    return new Intl.NumberFormat('pt-BR', {
-      currency: 'BRL',
-      style: 'currency',
-    }).format(value)
-  }
-
+  
   const calculateTotal = (items) => {
     const t = items.reduce((acc, curr) => acc += curr.subTotal, 0)
     setTotal(t)
@@ -48,7 +42,7 @@ export const Cart = () => {
   return (
     <main className="min-h-screen pt-10">
       <span className="text-2xl font-medium-mb-6 block text-right">
-        Total: {formatToCurrency(total)}
+        Total: {formatCurrency(total)}
       </span>
       <div className="overflow-x-auto">
         <table className="table w-full">
@@ -70,7 +64,7 @@ export const Cart = () => {
                 </td>
                 <td>{item.name}</td>
                 <td>
-                  {formatToCurrency(item.price)}
+                  {formatCurrency(item.price)}
                 </td>
                 <td>
                   <div className="flex items-center gap-x-2">
@@ -84,7 +78,7 @@ export const Cart = () => {
                   </button>
                 </td>
                 <td>
-                  {formatToCurrency(item.subTotal)}
+                  {formatCurrency(item.subTotal)}
                 </td>
                 <td>
                   <div>

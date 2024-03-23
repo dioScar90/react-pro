@@ -23,6 +23,7 @@ import { Login } from './pages/Login/index.jsx'
 import { Layout } from './pages/Login/components/Layout/index.jsx'
 import { Home } from './pages/Home/index.jsx'
 import { DashboardLogin } from './pages/Dashboard/Login/index.jsx'
+import { AuthProvider } from './providers/AuthProvider/index.jsx'
 
 const browserRouter = createBrowserRouter(
   createRoutesFromElements(
@@ -31,6 +32,7 @@ const browserRouter = createBrowserRouter(
         <Route index element={<Home />} />
         <Route path="cart" element={null} />
         <Route path="register" element={<Register />} />
+        <Route path="login" element={<Login />} />
         <Route path="dashboard" element={<Layout />}>
           {/* <Route index element={<Dashboard />} /> */}
           <Route path="login" element={<DashboardLogin />} />
@@ -58,6 +60,8 @@ const browserRouter = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={browserRouter} />
+    <AuthProvider>
+      <RouterProvider router={browserRouter} />
+    </AuthProvider>
   </React.StrictMode>
 )

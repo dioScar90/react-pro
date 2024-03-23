@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { schemaCreateUser } from './consts'
 import PropTypes from 'prop-types'
+import { httpClient } from '../../../../../services/axios'
 
 export const UserForm = ({ userId, name, email }) => {
   const { register, handleSubmit, formState } = useForm({
@@ -22,7 +23,13 @@ export const UserForm = ({ userId, name, email }) => {
     if (userId) {
       // TODO: edit user
     } else {
-      // TODO: create user
+      const body = {
+        name,
+        email,
+        password,
+        roleId: 0
+      }
+      httpClient.post('/users', body)
     }
 
     // TODO: integrar com API

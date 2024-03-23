@@ -15,6 +15,24 @@ const getDateTypeValue = (value) => {
   return new Date(dateStr)
 }
 
+const sanitizeOptions = (options) => {
+  const validAttributes = [
+    'year', 'month', 'day', 'hour', 'minute', 'second', 'hour12', 'timeZone', 'timeZoneName', 'weekday', 'dateStyle', 'timeStyle'
+  ]
+
+  const sanitized = {}
+  
+  for (const key in options) {
+    if (!validAttributes.includes(key)) {
+      continue
+    }
+
+    sanitized[key] = options[key]
+  }
+
+  return sanitized
+}
+
 export const formatDate = (value, options = {}) => {
   const date = getDateTypeValue(value)
 
@@ -22,6 +40,6 @@ export const formatDate = (value, options = {}) => {
     return null
   }
 
-  return new Intl.DateTimeFormat('pt-BR', { ...options }).format(date)
+  return new Intl.DateTimeFormat('pt-BR', { ...sanitizeOptions(options) }).format(date)
 }
 

@@ -3,26 +3,20 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { schemaLoginCard } from './consts'
 import { Link, useNavigate } from 'react-router-dom'
 import { useContext, useState } from 'react'
-import { AuthContext } from '../../../../../contexts/AuthContext'
+import { AuthContext } from '../../../../contexts/AuthContext'
 
 export const LoginCard = () => {
+  const { login } = useContext(AuthContext)
+  const navigate = useNavigate()
   const [errorAuth, setErrorAuth] = useState(null)
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(schemaLoginCard)
   })
-  const { login } = useContext(AuthContext)
-  const navigate = useNavigate()
-
-  const onSubmit = async (data) => {
+  
+  const onSubmitHandler = async (data) => {
     try {
-      const user = await login(data)
-      const role = user.role.name
-      
-      if (role === 'ADMIN') {
-        navigate('/dashboard')
-      } else {
-        setErrorAuth('Email ou senha incorretos.')
-      }
+      await login(data)
+      navigate('/')
     } catch (err) {
       if (err.response.status === 401) {
         setErrorAuth('Credenciais erradas.')
@@ -34,7 +28,7 @@ export const LoginCard = () => {
   return (
     <div className="p-6 rounded-lg bg-white shadow-md w-80">
       <h1 className="text-3xl text-center">Login</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmitHandler)}>
         {errorAuth && (
           <span className="text-red-400 inline-block mb-3 font-medium">{errorAuth}</span>
         )}
