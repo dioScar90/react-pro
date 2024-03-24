@@ -4,14 +4,11 @@ export const schemaCreateProduct = yup.object().shape({
   name: yup
     .string()
     .min(3, 'Nome precisa ter pelo menos 3 caracteres')
-    .required('Nome é obrigatório')
-
-  // id: 1,
-  // image: 'https://scx1.b-cdn.net/csz/news/800a/2019/1-whilehuaweii.jpg',
-  // name: 'Celulares',
-  // price: 3,
-  // stock: 3,
-  // category: 'Celulares',
-  // createdAt: '2023-01-01',
-  // updatedAt: '2023-01-01'
+    .required('Nome é obrigatório'),
+  price: yup.string().required('Preço é obrigatório'),
+  category: yup.string().required('Categoria é obrigatória'),
+  description: yup.string().required('Descrição é obrigatória'),
+  stock: yup.string().required('Estoque é obrigatório'),
+  insertImg: yup.boolean().default(false),
+  file: yup.mixed().when('insertImg', { is: true, then: (field) => field.required('Arquivo é obrigatório') }),
 })

@@ -3,41 +3,7 @@ import { FaMinus, FaTrash } from 'react-icons/fa'
 import { GoPlus } from 'react-icons/go'
 import { formatCurrency } from '../../helperFunctions/dataManipulation/formatCurrency'
 
-const items = [
-  {
-    productId: crypto.randomUUID(),
-    imagem: '',
-    name: 'iPhone',
-    price: 2_000,
-    qty: 2,
-    subTotal: 4_000
-  },
-  {
-    productId: crypto.randomUUID(),
-    imagem: '',
-    name: 'TV',
-    price: 3_000,
-    qty: 1,
-    subTotal: 3_000
-  },
-]
-
 export const Cart = () => {
-  const [total, setTotal] = useState(0)
-
-  const removeItem = (id) => {
-    const newItems = items.filter(item => item.productId !== id)
-    setItems(newItems)
-  }
-  
-  const calculateTotal = (items) => {
-    const t = items.reduce((acc, curr) => acc += curr.subTotal, 0)
-    setTotal(t)
-  }
-
-  useEffect(() => {
-    calculateTotal(items)
-  }, [items, calculateTotal])
 
   return (
     <main className="min-h-screen pt-10">
