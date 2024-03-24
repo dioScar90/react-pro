@@ -4,7 +4,7 @@ import { httpClient } from '../../services/axios'
 import { useEffect, useState } from 'react'
 import { setStorage } from '../../helperFunctions/storage/setStorage'
 import { getStorage } from '../../helperFunctions/storage/getStorage'
-import { revemoStorage } from '../../helperFunctions/storage/revemoStorage'
+import { removeStorage } from '../../helperFunctions/storage/removeStorage'
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     setUser(null)
-    revemoStorage('token', 'user')
+    removeStorage('token', 'user')
   }
 
   useEffect(() => {

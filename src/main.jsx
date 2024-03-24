@@ -24,6 +24,7 @@ import { Layout } from './pages/Login/components/Layout/index.jsx'
 import { Home } from './pages/Home/index.jsx'
 import { DashboardLogin } from './pages/Dashboard/Login/index.jsx'
 import { AuthProvider } from './providers/AuthProvider/index.jsx'
+import { QueryClientProvider, QueryClient } from 'react-query'
 
 const browserRouter = createBrowserRouter(
   createRoutesFromElements(
@@ -58,10 +59,14 @@ const browserRouter = createBrowserRouter(
   )
 )
 
+const queryClient = new QueryClient()
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider>
-      <RouterProvider router={browserRouter} />
-    </AuthProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <RouterProvider router={browserRouter} />
+      </AuthProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 )

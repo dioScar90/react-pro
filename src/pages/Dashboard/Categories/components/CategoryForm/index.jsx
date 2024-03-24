@@ -1,31 +1,8 @@
-import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { schemaCreateCategory } from './consts'
 import PropTypes from 'prop-types'
+import { useCategoryFormViewModel } from './useCategoryFormViewModel'
 
 export const CategoryForm = ({ categoryId }) => {
-  const { register, handleSubmit, formState } = useForm({
-    defaultValues: categoryId
-      ? {
-          name: 'João',
-          qtyProducts: 'XXXXXXXXXXXXXXX',
-          role: 1
-        }
-      : undefined,
-    resolver: yupResolver(schemaCreateCategory)
-  })
-
-  const onSubmitHandler = (data) => {
-    console.log('data', data)
-
-    if (categoryId) {
-      // TODO: edit category
-    } else {
-      // TODO: create category
-    }
-
-    // TODO: integrar com API
-  }
+  const { register, handleSubmit, formState, onSubmitHandler } = useCategoryFormViewModel(categoryId)
 
   return (
     <form onSubmit={handleSubmit(onSubmitHandler)}>

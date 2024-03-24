@@ -1,41 +1,11 @@
 import { Link } from 'react-router-dom'
 import { IoIosAdd } from 'react-icons/io'
 import { useState } from 'react'
+import { useCategoriesViewModel } from './useCategoriesViewModel'
 
 export const Categories = () => {
-  const [page, setPage] = useState(1)
-
-  const categories = [
-    {
-      id: 1,
-      name: 'Celulares',
-      qtyProducts: 3,
-      createdAt: '2023-01-01',
-      updatedAt: '2023-01-01'
-    },
-    {
-      id: 2,
-      name: 'Notebooks',
-      qtyProducts: 4,
-      createdAt: '2023-01-01',
-      updatedAt: '2023-01-01'
-    },
-    {
-      id: 3,
-      name: 'Impressoras',
-      qtyProducts: 5,
-      createdAt: '2023-01-01',
-      updatedAt: '2023-01-01'
-    },
-    {
-      id: 4,
-      name: 'Carros',
-      qtyProducts: 6,
-      createdAt: '2023-01-01',
-      updatedAt: '2023-01-01'
-    }
-  ]
-
+  const { categories, isLoading } = useCategoriesViewModel()
+  
   const perPage = 2
   const totalPages = Math.ceil(categories.length / perPage)
 
