@@ -1,11 +1,10 @@
-import { useContext } from 'react'
 import { IoCartOutline } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
-import { AuthContext } from '../../contexts/AuthContext'
 import { useCartStore } from '../../stores/cartStore'
+import { useAuthStore } from '../../stores/authStore'
 
 export const Header = () => {
-  const { user } = useContext(AuthContext)
+  const user = useAuthStore(({ user }) => user)
   const items = useCartStore(({ items }) => items)
 
   return (

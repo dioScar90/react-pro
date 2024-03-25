@@ -20,15 +20,17 @@ httpClient.interceptors.request.use((config) => {
 httpClient.interceptors.response.use(
   response => response,
   (error) => {
-    if (error.config.url !== '/auth/login' && error.response.status === 401) {
-      const user = getStorage('user')
-      removeStorage('token', 'user')
-      
-      const isAdmin = user?.role?.name === 'ADMIN'
-      location.href = isAdmin ? '/dashboard/login' : '/login'
-    }
+    const isAuthError = error.config.url !== '/auth/login' && error.response.status === 401
 
-    return Promise.reject(error)
+    if (!isAuthError) {
+      return Promise.reject(error)
+    }
+    
+    const { state } = getStorage('auth-storage')
+    removeStorage('token', 'auth-storage')
+    
+    const isAdmin = state?.user?.role?.name === 'ADMIN'
+    location.href = isAdmin ? '/dashboard/login' : '/login'
   }
 )
 

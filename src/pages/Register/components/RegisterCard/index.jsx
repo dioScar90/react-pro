@@ -1,23 +1,12 @@
-import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { schemaRegisterCard } from './consts'
-import { useNavigate } from 'react-router-dom'
+import { useRegisterCardViewModel } from "./useRegisterCardViewModel"
 
 export const RegisterCard = () => {
-  const { register, handleSubmit, formState } = useForm({
-    resolver: yupResolver(schemaRegisterCard)
-  })
-  const navigate = useNavigate()
-
-  const onSubmit = (data) => {
-    console.log('data', data)
-    navigate('/dashboard')
-  }
+  const { register, handleSubmit, formState, onSubmitHandler } = useRegisterCardViewModel()
 
   return (
     <div className="p-6 rounded-lg bg-white shadow-md w-80">
     <h1 className="text-3xl text-center">Registre-se</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmitHandler)}>
         <div className="flex flex-col gap-y-1">
           <label htmlFor="">Email</label>
           <input

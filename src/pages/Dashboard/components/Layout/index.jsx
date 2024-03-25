@@ -1,21 +1,9 @@
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import { Sidebar } from '../Sidebar'
-import { useContext, useEffect } from 'react'
-import { AuthContext } from '../../../../contexts/AuthContext'
+import { useLayoutViewModel } from './useLayoutViewModel'
 
 export const Layout = () => {
-  const { user, isLoading } = useContext(AuthContext)
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    if (isLoading) {
-      return
-    }
-
-    if (user?.role?.name !== 'ADMIN') {
-      navigate('/')
-    }
-  }, [user, navigate, isLoading])
+  useLayoutViewModel()
 
   return (
     <>

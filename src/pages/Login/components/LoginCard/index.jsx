@@ -1,30 +1,9 @@
-import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { schemaLoginCard } from './consts'
-import { Link, useNavigate } from 'react-router-dom'
-import { useContext, useState } from 'react'
-import { AuthContext } from '../../../../contexts/AuthContext'
+import { Link } from 'react-router-dom'
+import { useLoginCardViewModel } from './useLoginCardViewModel'
 
 export const LoginCard = () => {
-  const { login } = useContext(AuthContext)
-  const navigate = useNavigate()
-  const [errorAuth, setErrorAuth] = useState(null)
-  const { register, handleSubmit, formState } = useForm({
-    resolver: yupResolver(schemaLoginCard)
-  })
+  const { onSubmitHandler, handleSubmit, register, formState } = useLoginCardViewModel()
   
-  const onSubmitHandler = async (data) => {
-    try {
-      await login(data)
-      navigate('/')
-    } catch (err) {
-      if (err.response.status === 401) {
-        setErrorAuth('Credenciais erradas.')
-      }
-      console.log('err', err)
-    }
-  }
-
   return (
     <div className="p-6 rounded-lg bg-white shadow-md w-80">
       <h1 className="text-3xl text-center">Login</h1>

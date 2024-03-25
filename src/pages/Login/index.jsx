@@ -1,21 +1,8 @@
-import { useContext, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { LoginCard } from './components/LoginCard'
-import { AuthContext } from '../../contexts/AuthContext'
+import { useLoginViewModel } from './useLoginViewModel'
 
 export const Login = () => {
-  const { user, isLoading } = useContext(AuthContext)
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    if (isLoading) {
-      return
-    }
-    
-    if (user) {
-      navigate('/')
-    }
-  }, [user, navigate, isLoading])
+  useLoginViewModel()
 
   return (
     <>
