@@ -3,8 +3,8 @@ import { CartsService } from '../../services/carts'
 import { useAuthStore } from '../../stores/authStore'
 import { useCartStore } from '../../stores/cartStore'
 import { useQuery } from 'react-query'
-import { calculateTotalPrice } from '../../helperFunctions/dataManipulation/calculateTotalPrice'
-import { calculateTotal } from '../../helperFunctions/dataManipulation/calculateTotal'
+import { calculateTotalPrice } from '../../helperFunctions/calculate/calculateTotalPrice'
+import { calculateTotal } from '../../helperFunctions/calculate/calculateTotal'
 import { useEffect } from 'react'
 
 const makeRequestUpdateItem = debounce(CartsService.updateItem, 1000)

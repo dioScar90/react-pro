@@ -1,10 +1,18 @@
-import { useEffect, useState } from 'react'
 import { FaMinus, FaTrash } from 'react-icons/fa'
 import { GoPlus } from 'react-icons/go'
 import { formatCurrency } from '../../helperFunctions/dataManipulation/formatCurrency'
+import { useCartViewModel } from './useCartViewModel'
 
 export const Cart = () => {
-
+  const {
+    items,
+    total,
+    modalProps,
+    changeQuantity,
+    setIsModalOpen,
+    setProductId,
+  } = useCartViewModel()
+  
   return (
     <main className="min-h-screen pt-10">
       <span className="text-2xl font-medium-mb-6 block text-right">

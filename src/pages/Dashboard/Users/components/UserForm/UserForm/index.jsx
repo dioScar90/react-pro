@@ -1,38 +1,19 @@
-import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { schemaCreateUser } from './consts'
 import PropTypes from 'prop-types'
-import { httpClient } from '../../../../../services/axios'
+import { useUserFormViewModel } from './useUserFormViewModel'
+import { Spinner } from '../../../../../../components/Spinner'
 
 export const UserForm = ({ userId, name, email }) => {
-  const { register, handleSubmit, formState } = useForm({
-    defaultValues: userId
-      ? {
-          name: 'João',
-          email: 'XXXXXXXXXXXXXXX',
-          password: 'XXXXXXXXXXXXXXX',
-          role: 1
-        }
-      : undefined,
-    resolver: yupResolver(schemaCreateUser)
-  })
+  const {
+    formState,
+    isLoading,
+    roles,
+    register,
+    handleSubmit,
+    onSubmitHandler,
+  } = useUserFormViewModel(userId)
 
-  const onSubmitHandler = (data) => {
-    console.log('data', data)
-
-    if (userId) {
-      // TODO: edit user
-    } else {
-      const body = {
-        name,
-        email,
-        password,
-        roleId: 0
-      }
-      httpClient.post('/users', body)
-    }
-
-    // TODO: integrar com API
+  if (isLoading) {
+    return <Spinner />
   }
 
   return (
@@ -79,11 +60,17 @@ export const UserForm = ({ userId, name, email }) => {
           <option value hidden>
             -- Selecione --
           </option>
-          <option value="1">ADMIN</option>
+          {roles.map((role) => (
+            <option key={role.id} value="{role.id}">{role.name}</option>
+          ))}
         </select>
         <span className="text-red-300">{formState.errors.role?.message}</span>
       </div>
-      <button type="submit" className="mt-4 bg-primary w-full py-2 rounded-lg text-white">
+      <button
+        type="submit"
+        className="mt-4 bg-primary w-full py-2 rounded-lg text-white"
+        disabled={!formState.isDirty || formState.isSubmitting}
+      >
         {userId ? 'Editar' : 'Cadastrar'}
       </button>
     </form>
@@ -91,7 +78,5 @@ export const UserForm = ({ userId, name, email }) => {
 }
 
 UserForm.propTypes = {
-  userId: PropTypes.string
-  // name: PropTypes.string,
-  // email: PropTypes.string,
+  userId: PropTypes.string,
 }

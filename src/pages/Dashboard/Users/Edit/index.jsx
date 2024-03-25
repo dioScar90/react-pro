@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { UserForm } from '../components/UserForm'
+import { UserForm } from '../components/UserForm/UserForm'
 
 export const EditUser = () => {
   const { id } = useParams()

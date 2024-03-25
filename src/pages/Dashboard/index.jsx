@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom"
 import { IoIosAdd } from 'react-icons/io'
-import { Pagination } from '../../components/Pagination'
 import { useDashboardViewModel } from "./useDashboardViewModel"
 
 export const Dashboard = () => {

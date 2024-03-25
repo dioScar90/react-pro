@@ -1,4 +1,4 @@
-import { UserForm } from '../components/UserForm'
+import { UserForm } from '../components/UserForm/UserForm'
 
 export const CreateUser = () => {
   return (
