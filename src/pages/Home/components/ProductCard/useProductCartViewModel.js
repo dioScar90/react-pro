@@ -1,10 +1,10 @@
 import { useCartStore } from "../../../../stores/cartStore"
 
 export const useProductCartViewModel = (procut) => {
-  const cartStore = useCartStore()
+  const addItem = useCartStore(({ addItem }) => addItem)
 
   const addToCart = () => {
-    cartStore.addItem({
+    addItem({
       ...product,
       productId: product.id,
     })

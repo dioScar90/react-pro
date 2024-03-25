@@ -1,4 +1,5 @@
 import { create } from "zustand"
+import { persist, createJSONStorage } from 'zustand/middleware'
 import { calculateTotal } from '../../helperFunctions/dataManipulation/calculateTotal'
 import { calculateTotalPrice } from '../../helperFunctions/dataManipulation/calculateTotalPrice'
 
@@ -15,7 +16,7 @@ const changeQuantity = (id, qty, items) => {
   return newItems
 }
 
-export const useCartStore = create(() => ({
+const storeCallback = (set) => ({
   total: 0,
   items: [],
   changeQuantity: (id, qty) => set((state) => {
@@ -50,4 +51,11 @@ export const useCartStore = create(() => ({
     const total = calculateTotal(newItems, 'subTotal')
     return { items: newItems, total }
   })
-}))
+})
+
+export const useCartStore = create(
+  persist(storeCallback, {
+    name: 'cart-storage',
+    storage: createJSONStorage(() => localStorage)
+  })
+)

@@ -4,7 +4,7 @@ import { useCartStore } from "../../stores/cartStore"
 export const useCartViewModel = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [productId, setProductId] = useState(null)
-  const cartStore = useCartStore()
+  const { removeItem, items, total, changeQuantity } = useCartStore()
   
   const onCloseModal = () => {
     setIsModalOpen(false)
@@ -13,7 +13,7 @@ export const useCartViewModel = () => {
 
   const onConfirmModal = () => {
     if (productId) {
-      cartStore.removeItem(productId)
+      removeItem(productId)
       setIsModalOpen(false)
     }
   }
@@ -28,10 +28,10 @@ export const useCartViewModel = () => {
   }
   
   return {
-    items: cartStore.items,
-    total: cartStore.total,
+    items,
+    total,
     modalProps,
-    changeQuantity: cartStore.changeQuantity,
+    changeQuantity,
     setIsModalOpen,
     setProductId,
   }

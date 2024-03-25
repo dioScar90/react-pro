@@ -6,7 +6,7 @@ import { useCartStore } from '../../stores/cartStore'
 
 export const Header = () => {
   const { user } = useContext(AuthContext)
-  const cartStore = useCartStore()
+  const items = useCartStore(({ items }) => items)
 
   return (
     <header className="py-4 flex justify-between items-center">
@@ -14,9 +14,9 @@ export const Header = () => {
         LOGO
       </Link>
       <div className="flex items-center gap-x-3">
-        <Link to="/cart">
+        <Link to="/cart" className="flex">
           <IoCartOutline className="text-3xl text-gray-700" />
-          {cartStore.total}
+          {items.length}
         </Link>
         {user ? (
           <span>
