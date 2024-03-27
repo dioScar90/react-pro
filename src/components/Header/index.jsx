@@ -1,7 +1,7 @@
 import { IoCartOutline } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
-import { useCartStore } from '../../stores/cartStore'
-import { useAuthStore } from '../../stores/authStore'
+import { useCartStore } from '@/stores/cartStore'
+import { useAuthStore } from '@/stores/authStore'
 
 export const Header = () => {
   const user = useAuthStore(({ user }) => user)

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useRegisterCardViewModel } from "./useRegisterCardViewModel"
 
 export const RegisterCard = () => {

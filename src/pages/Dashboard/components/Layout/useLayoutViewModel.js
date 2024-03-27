@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
-import { useAuthStore } from '../../../../stores/authStore'
+import { useAuthStore } from '@/stores/authStore'
 
 export const useLayoutViewModel = () => {
   const user = useAuthStore(({ user }) => user)

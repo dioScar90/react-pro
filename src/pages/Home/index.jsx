@@ -1,11 +1,11 @@
 import { SearchBar } from './components/SearchBar'
 import { ProductCard } from './components/ProductCard'
 import { useHomeViewModel } from './useHomeViewModel'
-import { Spinner } from '../../components/Spinner'
-import { Pagination } from '../../components/Pagination'
+import { Spinner } from '@/components/Spinner'
+import { Pagination } from '@/components/Pagination'
 
 export const Home = () => {
-  const { onSearchHandler, onChangeSearchHandler, searchValue, searchedProducts, isLoading, page, products, totalPages, changePage } = useHomeViewModel()
+  const { onSearchHandler, onChangeSearchHandler, searchValue, searchedProducts, isLoading, page, products } = useHomeViewModel()
 
   return (
     <div className="min-h-screen">

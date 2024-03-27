@@ -4,10 +4,10 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { useEffect, useState } from "react"
 import { useNavigate } from 'react-router-dom' 
 import { currencyMask } from "./currencyMask"
-import { httpClient } from '../../../../../services/axios'
-import { ProductsService } from "../../../../../services/products"
+import { httpClient } from '@/services/axios'
+import { ProductsService } from "@/services/products"
 import { useQuery } from 'react-query'
-import { CategoriesService } from "../../../../../services/categories"
+import { CategoriesService } from "@/services/categories"
 
 export const useProductFormViewModel = (productId) => {
   const [categories, setCategories] = useState([])

@@ -1,7 +1,7 @@
 import { create } from "zustand"
 import { persist, createJSONStorage } from 'zustand/middleware'
-import { calculateTotal } from '../../helperFunctions/calculate/calculateTotal'
-import { calculateTotalPrice } from '../../helperFunctions/calculate/calculateTotalPrice'
+import { calculateTotal } from '@/utils/calculate/calculateTotal'
+import { calculateTotalPrice } from '@/utils/calculate/calculateTotalPrice'
 
 const changeQuantity = (id, qty, items) => {
   const newItems = items.map((item) => {

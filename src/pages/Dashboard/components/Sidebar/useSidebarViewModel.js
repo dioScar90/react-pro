@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
-import { removeStorage } from '../../../../helperFunctions/storage/revemoStorage'
-import { useAuthStore } from '../../../../stores/authStore'
+import { removeStorage } from '@/utils/storage/revemoStorage'
+import { useAuthStore } from '@/stores/authStore'
 
 export const useSidebarViewModel = () => {
   const navigate = useNavigate()

@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { getStorage } from '../../helperFunctions/storage/getStorage'
-import { removeStorage } from '../../helperFunctions/storage/revemoStorage'
+import { getStorage } from '@/utils/storage/getStorage'
+import { removeStorage } from '@/utils/storage/revemoStorage'
 
 const httpClient = axios.create({
   baseURL: 'http://localhost:3000'

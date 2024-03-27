@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { useUserFormViewModel } from './useUserFormViewModel'
-import { Spinner } from '../../../../../../components/Spinner'
+import { Spinner } from '@/components/Spinner'
 
 export const UserForm = ({ userId, name, email }) => {
   const {

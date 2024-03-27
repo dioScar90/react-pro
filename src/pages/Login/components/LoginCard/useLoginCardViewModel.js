@@ -2,9 +2,9 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { schemaLoginCard } from './consts'
 import { useNavigate } from 'react-router-dom'
-import { AuthService } from '../../../../services/auth'
-import { UsersService } from '../../../../services/users'
-import { useAuthStore } from '../../../../stores/authStore'
+import { AuthService } from '@/services/auth'
+import { UsersService } from '@/services/users'
+import { useAuthStore } from '@/stores/authStore'
 
 export const useLoginCardViewModel = () => {
   const navigate = useNavigate()

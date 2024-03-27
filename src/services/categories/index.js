@@ -1,4 +1,4 @@
-import httpClient from '../axios'
+import { httpClient } from '@/services/axios'
 
 const MODULE = '/categories'
 

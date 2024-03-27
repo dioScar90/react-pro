@@ -1,13 +1,12 @@
 import { useState } from 'react'
-import { products as productsList } from './consts'
-import { useFetchProducts } from '../../hooks/useFetchProducts'
-import { ProductsService } from '../../services/products'
-import { debounce } from '../../helperFunctions/debounce/debounce'
+import { useFetchProducts } from '@/hooks/useFetchProducts'
+import { ProductsService } from '@/services/products'
+import { debounce } from '@/utils/debounce/debounce'
 
 export const useHomeViewModel = () => {
   const [searchedProducts, setSearchedProducts] = useState([])
   const [searchValue, setSearchValue] = useState('')
-  const { products, page, totalPages, changePage } = useFetchProducts({
+  const { products, isLoading, page, totalPages, changePage } = useFetchProducts({
     perPage: 3,
   })
   

@@ -1,11 +1,11 @@
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { schemaCreateUser } from './consts'
-import { httpClient } from '../../../../../../services/axios'
+import { httpClient } from '@/services/axios'
 import { useNavigate } from 'react-router'
 import { useQuery } from 'react-query'
-import { UsersService } from '../../../../../../services/users'
-import { RolesService } from '../../../../../../services/roles'
+import { UsersService } from '@/services/users'
+import { RolesService } from '@/services/roles'
 import { useEffect } from 'react'
 
 export const useUserFormViewModel = (userId) => {

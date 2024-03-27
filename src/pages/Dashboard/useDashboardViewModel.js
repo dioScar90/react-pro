@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { httpClient } from "../../services/axios"
+import { httpClient } from "@/services/axios"
 
 export const useDashboardViewModel = () => {
   const [page, setPage] = useState(1)

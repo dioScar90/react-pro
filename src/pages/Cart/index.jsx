@@ -1,6 +1,6 @@
 import { FaMinus, FaTrash } from 'react-icons/fa'
 import { GoPlus } from 'react-icons/go'
-import { formatCurrency } from '../../helperFunctions/dataManipulation/formatCurrency'
+import { formatCurrency } from '@/utils/format/formatCurrency'
 import { useCartViewModel } from './useCartViewModel'
 
 export const Cart = () => {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { ProductsService } from "../../services/products"
+import { ProductsService } from "@/services/products"
 import { useQuery } from 'react-query'
 
 export const useFetchProducts = ({ perPage = 30 }) => {

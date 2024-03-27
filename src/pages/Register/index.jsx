@@ -1,4 +1,4 @@
-import DashboardLoginImage from '../../assets/dashboardLoginImage.svg'
+import DashboardLoginImage from '@/assets/dashboardLoginImage.svg'
 import { RegisterCard } from './components/RegisterCard'
 
 export const Register = () => {

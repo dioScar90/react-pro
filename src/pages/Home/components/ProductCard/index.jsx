@@ -1,6 +1,5 @@
 import { IoCartOutline } from 'react-icons/io5'
-import PropTypes from 'prop-types'
-import { formatCurrency } from '../../../../helperFunctions/format/formatCurrency'
+import { formatCurrency } from '@/utils/format/formatCurrency'
 
 export const ProductCard = ({ product }) => {
   const { addToCart } = useProductCartViewModel(product)

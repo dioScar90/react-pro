@@ -3,11 +3,10 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { schemaRegisterCard } from './consts'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import { AuthService } from '../../../../services/auth'
-import { setStorage } from '../../../../helperFunctions/storage/setStorage'
-import { useAuthStore } from '../../../../stores/authStore'
-import { UsersService } from '../../../../services/users'
-// import { useAuthStorage } from '../../../../stores/authStore'
+import { AuthService } from '@/services/auth'
+import { setStorage } from '@/utils/storage/setStorage'
+import { useAuthStore } from '@/stores/authStore'
+import { UsersService } from '@/services/users'
 
 export const useRegisterCardViewModel = () => {
   const navigate = useNavigate()

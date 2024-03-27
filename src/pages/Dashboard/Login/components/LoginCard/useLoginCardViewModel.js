@@ -3,10 +3,10 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { schemaLoginCard } from './consts'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import { useAuthStore } from '../../../../../stores/authStore'
-import { AuthService } from '../../../../../services/auth'
-import { setStorage } from '../../../../../helperFunctions/storage/setStorage'
-import { UsersService } from '../../../../../services/users'
+import { useAuthStore } from '@/stores/authStore'
+import { AuthService } from '@/services/auth'
+import { setStorage } from '@/utils/storage/setStorage'
+import { UsersService } from '@/services/users'
 
 export const useLoginCardViewModel = () => {
   const { register, handleSubmit, formState } = useForm({

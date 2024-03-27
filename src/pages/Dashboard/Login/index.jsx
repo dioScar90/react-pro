@@ -1,4 +1,4 @@
-import DashboardLoginImage from '../../../assets/dashboardLoginImage.svg'
+import DashboardLoginImage from '@/assets/dashboardLoginImage.svg'
 import { LoginCard } from './components/LoginCard'
 import { useDashboardLoginViewModel } from './useDashboardLoginViewModel'
 

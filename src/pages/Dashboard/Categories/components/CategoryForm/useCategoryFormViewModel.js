@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form"
 import { schemaCreateCategory } from "./consts"
 import { yupResolver } from "@hookform/resolvers/yup"
-import { CategoriesService } from "../../../../../services/categories"
+import { CategoriesService } from "@/services/categories"
 import { useNavigate } from 'react-router-dom'
 import { useQueryClient, useQuery } from 'react-query'
 import { useEffect } from "react"

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useCartStore } from "../../stores/cartStore"
+import { useCartStore } from "@/stores/cartStore"
 
 export const useCartViewModel = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
